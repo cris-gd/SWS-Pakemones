@@ -1,6 +1,7 @@
 # SWS-Pakemones
 
 Complete pakémon‑inspired web platform with user management, pakédex, social interactions (photo sharing, comments), and administrative tools. Built with vanilla PHP, JSON flat‑file storage, and HTML/CSS templates. Developed as part of the *Web Services: Server* course at UPNA (Telecommunications Engineering, Spring 2026).
+
 ---
 
 ## Features
