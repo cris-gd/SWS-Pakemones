@@ -1,0 +1,49 @@
+{
+    "users": [
+        {
+            "id": 0,
+            "email": "profesor@pacolibreta.es",
+            "first_name": "Jose",
+            "last_name": "Santi",
+            "password": "7110eda4d09e062aa5e4a390b0a572ac0d2c0220",
+            "username": "profesor",
+            "type": "admin"
+        },
+        {
+            "id": 1,
+            "username": "paco_el_del_bar",
+            "password": "203e42f85b15dce902f6fc18152b8059b998fb00",
+            "first_name": "Francisco",
+            "last_name": "García López",
+            "email": "paco.bar@pacolibreta.es",
+            "type": "admin"
+        },
+        {
+            "id": 2,
+            "email": "maricarmen87@pacolibreta.es",
+            "first_name": "María Carmen",
+            "last_name": "Sánchez Ruiz",
+            "password": "bae452035a6370b882709c84478ef86beada22ca",
+            "username": "mari_carmen87",
+            "type": "user"
+        },
+        {
+            "id": 3,
+            "username": "el_tio_manolo",
+            "password": "ff8bf79da635288602e90013adbc0450dcc0b831",
+            "first_name": "Manuel",
+            "last_name": "Fernández Gómez",
+            "email": "manolo@pacolibreta.es",
+            "type": "user"
+        },
+        {
+            "id": 4,
+            "email": "lola.huerta@pacolibreta.es",
+            "first_name": "Dolores",
+            "last_name": "Martín Pérez",
+            "password": "ccee6332a418a7291e38328a971e97f24652f2b7",
+            "username": "lola_la_huerta",
+            "type": "user"
+        }
+    ]
+}

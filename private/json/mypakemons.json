@@ -1,0 +1,36 @@
+{
+    "mypakemons": [
+        {
+            "id_user": 2,
+            "id_pakemon": 7
+        },
+        {
+            "id_user": 3,
+            "id_pakemon": 8
+        },
+        {
+            "id_user": 3,
+            "id_pakemon": 3
+        },
+        {
+            "id_user": 3,
+            "id_pakemon": 1
+        },
+        {
+            "id_user": 2,
+            "id_pakemon": 9
+        },
+        {
+            "id_user": 2,
+            "id_pakemon": 2
+        },
+        {
+            "id_user": 2,
+            "id_pakemon": 3
+        },
+        {
+            "id_user": 2,
+            "id_pakemon": "5"
+        }
+    ]
+}

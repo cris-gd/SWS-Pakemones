@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Administración - Pakoadiestradores</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffffff 60%, #cc0000 60%);
+    }
+
+    /* CABECERA */
+    header {
+      background: #ffffff;
+      border-bottom: 5px solid #000;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      justify-content: space-between;
+      box-shadow: 0 5px 0 #000;
+    }
+
+    .btn-volver {
+      padding: 10px 16px;
+      background: #cc0000;
+      color: #fff;
+      border: 3px solid #000;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 3px 3px 0 #000;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .btn-volver:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 5px 5px 0 #000;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    /* CONTENEDOR */
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: #ffffff;
+      border: 5px solid #000;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 8px 8px 0 #000;
+    }
+
+    h1 {
+      text-align: center;
+      color: #cc0000;
+      margin-bottom: 25px;
+      text-shadow: 2px 2px 0 #000;
+    }
+
+    h2 {
+      margin-top: 30px;
+      color: #000;
+      border-bottom: 3px solid #cc0000;
+      padding-bottom: 5px;
+    }
+
+    /* LISTADO */
+    .user-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* USUARIO NORMAL */
+    .user-row {
+      display: grid;
+      grid-template-columns: 1.5fr 1.5fr 2fr auto;
+      align-items: center;
+      padding: 12px;
+      border: 4px solid #000;
+      border-radius: 12px;
+      cursor: pointer;
+      background: #fff;
+      box-shadow: 4px 4px 0 #000;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .user-row:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 #000;
+      background: #ffecec;
+    }
+
+    /* ADMIN */
+    .admin-row {
+      display: grid;
+      grid-template-columns: 1.5fr 1.5fr 2fr auto;
+      align-items: center;
+      padding: 12px;
+      border: 4px solid #000;
+      border-radius: 12px;
+      cursor: pointer;
+      background: #000;
+      color: #fff;
+      box-shadow: 4px 4px 0 #cc0000;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .admin-row:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 #cc0000;
+      background: #330000;
+    }
+
+    .user-data {
+      font-weight: bold;
+      color: #000;
+    }
+
+    .admin-row .user-data {
+      color: #fff;
+    }
+
+    .email {
+      font-size: 14px;
+      color: #333;
+    }
+
+    .admin-row .email {
+      color: #ffb3b3;
+    }
+
+    /* BOTÓN ELIMINAR */
+    .btn-eliminar {
+      padding: 8px 12px;
+      background: #000;
+      color: #fff;
+      border: 3px solid #000;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 3px 3px 0 #cc0000;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .btn-eliminar:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 5px 5px 0 #cc0000;
+      background: #cc0000;
+    }
+
+    .btn {
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      border: 3px solid #000;
+      box-shadow: 3px 3px 0 #000;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 5px 5px 0 #000;
+    }
+
+
+
+    .btn-add {
+      background: #cc0000;
+      color: #fff;
+    }
+
+
+    /* TEXTO PIE */
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 12px;
+      color: #333;
+    }
+  </style>
+
+  <script>
+    function volverAdmin() {
+      window.location.href = "admin.php";
+    }
+
+    function anhadirAdmin() {
+      window.location.href = "anhadir_admin.php";
+    }
+
+    function modificarUsuario(id) {
+      window.location.href = "modificar.php?id=" + id;
+    }
+
+    function eliminarUsuario(event, id) {
+      event.stopPropagation();
+      if (confirm("¿Seguro que quieres eliminar este Pakoadiestrador?")) {
+        window.location.href = "eliminar.php?id=" + id;
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  <!-- CABECERA -->
+  <header>
+	  <div>
+    <button class="btn-volver" onclick="volverAdmin()">⬅ Volver</button>
+    <img src="images/pakemonlogo.png" alt="Pakemon Logo">
+	  </div>
+	<div>
+  <button class="btn btn-add" onclick="anhadirAdmin()">+ Añadir Administrador</button>
+	</div>
+  </header>
+
+  <!-- CONTENIDO -->
+  <div class="container">
+    <h1>Listado de Pakoadiestradores</h1>
+
+    <!-- USUARIOS NORMALES -->
+    <h2>Usuarios</h2>
+    <div class="user-list">
+
+##INIT_LIST##
+      <div class="user-row" onclick="modificarUsuario(##ID##)">
+        <div class="user-data">##USERNAME##</div>
+        <div class="user-data">##FIRST_NAME## ##LAST_NAME##</div>
+        <div class="email">##EMAIL##</div>
+        <button class="btn-eliminar" onclick="eliminarUsuario(event,##ID##)">Eliminar</button>
+      </div>
+##END_LIST##
+##INIT_ADMIN##
+      <div class="admin-row" onclick="modificarUsuario(##ID##)">
+        <div class="user-data">👑 ##USERNAME##</div>
+        <div class="user-data">##FIRST_NAME## ##LAST_NAME##</div>
+        <div class="email">##EMAIL##</div>
+        <button class="btn-eliminar" onclick="eliminarUsuario(event,##ID##)">Eliminar</button>
+      </div>
+##END_ADMIN##
+
+    </div>
+
+    <div class="footer">
+      Solo los administradores pueden tocar esta libreta 📒🔥
+    </div>
+  </div>
+
+</body>
+</html>

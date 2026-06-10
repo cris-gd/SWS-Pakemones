@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Libretica Pakemon - Modificar Pakemon</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffffff 60%, #cc0000 60%);
+    }
+
+    /* CABECERA */
+    header {
+      background: #ffffff;
+      border-bottom: 5px solid #000;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      justify-content: space-between;
+      box-shadow: 0 5px 0 #000;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    .btn-volver {
+      padding: 10px 16px;
+      background: #cc0000;
+      color: #fff;
+      border: 3px solid #000;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 3px 3px 0 #000;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .btn-volver:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 5px 5px 0 #000;
+    }
+
+    /* CONTENEDOR */
+    .register-container {
+      max-width: 600px;
+      margin: 30px auto;
+      background: #fff;
+      border: 5px solid #000;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 8px 8px 0 #000;
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+      color: #cc0000;
+      text-shadow: 2px 2px 0 #000;
+      margin-bottom: 20px;
+    }
+
+    /* FORMULARIO */
+    .form-group {
+      margin-bottom: 12px;
+      text-align: left;
+    }
+
+    label {
+      font-weight: bold;
+      color: #000;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border: 3px solid #000;
+      border-radius: 8px;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: #cc0000;
+    }
+
+    /* BOTONES */
+    .btn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      border: 3px solid #000;
+      box-shadow: 3px 3px 0 #000;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 5px 5px 0 #000;
+    }
+
+    .btn-register {
+      background: #cc0000;
+      color: #fff;
+    }
+
+    .btn-back {
+      background: #fff;
+      color: #000;
+    }
+
+    /* BURBUJA */
+    .burst {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      background: #cc0000;
+      color: white;
+      border: 3px solid #000;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: bold;
+      transform: rotate(15deg);
+      box-shadow: 3px 3px 0 #000;
+      text-align: center;
+    }
+
+    .footer-text {
+      margin-top: 15px;
+      font-size: 12px;
+      color: #333;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <button class="btn-volver" onclick="volverAdmin()">⬅ Volver</button>
+  <img src="images/pakemonlogo.png" alt="Pakemon Logo">
+  <div></div>
+</header>
+
+<div class="register-container">
+  <div class="burst">¡Modificar<br>Pakemon!</div>
+
+  <h1>Modificar Pakemon</h1>
+
+  <form action="modificar_pakemon.php" method="POST" enctype="multipart/form-data" onsubmit="return validarPakemon()">
+
+    <input type="hidden" id="id" name="id" value="##PAKEID##">
+
+    <div class="form-group">
+      <label for="pakedex_number">Número Pakedex</label>
+      <input type="number" id="pakedex_number" name="pakedex_number" value="##PAKEDX##">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Nombre</label>
+      <input type="text" id="name" name="name" value="##NOMBRE##">
+    </div>
+
+    <div class="form-group">
+      <label for="generation">Generación</label>
+      <input type="number" id="generation" name="generation" value="##GENERACION##">
+    </div>
+
+    <div class="form-group">
+      <label for="region_id">Región</label>
+      <select id="region_id" name="region_id">
+	##OPTION_INIT##
+        <option value="##ID##">##REGION##</option>
+	##OPTION_END##
+	##OPTION_SELECTED_INIT##
+        <option value="##ID##" selected >##REGION##</option>
+	##OPTION_SELECTED_END##
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="form">Forma</label>
+      <input type="text" id="form" name="form" value="##FORMA##">
+    </div>
+
+    <div class="form-group">
+      <label for="primary_type_id">Tipo Primario</label>
+      <select id="primary_type_id" name="primary_type_id">
+	##TYPE1_INIT##
+        <option value="##ID##">##TIPO##</option>
+	##TYPE1_END##
+	##TYPE1_SELECTED_INIT##
+        <option value="##ID##" selected >##TIPO##</option>
+	##TYPE1_SELECTED_END##
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="secondary_type_id">Tipo Secundario</label>
+      <select id="secondary_type_id" name="secondary_type_id">
+	##TYPE2_INIT##
+        <option value="##ID##">##TIPO##</option>
+	##TYPE2_END##
+	##TYPE2_SELECTED_INIT##
+        <option value="##ID##" selected >##TIPO##</option>
+	##TYPE2_SELECTED_END##
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="category">Categoría</label>
+      <input type="text" id="category" name="category" value="##CATEGORIA##">
+    </div>
+
+    <div class="form-group">
+      <label for="color">Color</label>
+      <input type="text" id="color" name="color" value="##COLOR##">
+    </div>
+
+    <div class="form-group">
+      <label for="group">Grupo</label>
+      <input type="text" id="group" name="group" value="##GRUPO##">
+    </div>
+
+    <div class="form-group">
+      <label for="height_m">Altura (m)</label>
+      <input type="number" step="0.01" id="height_m" name="height_m" value="##ALTURA##">
+    </div>
+
+    <div class="form-group">
+      <label for="weight_kg">Peso (kg)</label>
+      <input type="number" step="0.1" id="weight_kg" name="weight_kg" value="##PESO##">
+    </div>
+
+    <div class="form-group">
+      <label for="body_shape">Forma Corporal</label>
+      <input type="text" id="body_shape" name="body_shape" value="##FORMACORPORAL##">
+    </div>
+
+    <div class="form-group">
+      <label for="habitat">Hábitat</label>
+      <input type="text" id="habitat" name="habitat" value="##HABITAT##">
+    </div>
+
+    <div class="form-group">
+      <label for="gender">Género</label>
+      <input type="text" id="gender" name="gender" value="##GENERO##">
+    </div>
+
+    <div class="form-group">
+      <label for="gender_ratio">Ratio de Género</label>
+      <input type="text" id="gender_ratio" name="gender_ratio" value="##GENERATOR##">
+    </div>
+
+    <div class="form-group">
+      <label for="photo">Foto</label>
+      <input type="file" id="photo" name="photo" accept="image/*">
+    </div>
+
+    <button type="submit" class="btn btn-register">Guardar Cambios</button>
+  </form>
+
+  <button class="btn btn-back" onclick="volverAdmin()">Volver al Panel</button>
+
+  <div class="footer-text">
+    Modifica los datos de tu Pakemon 🐖🔥
+  </div>
+</div>
+
+<script>
+  function validarPakemon() {
+    const requiredFields = [
+      "pakedex_number", "name", "generation", "region_id",
+      "form", "primary_type_id", "category", "color",
+      "group", "height_m", "weight_kg", "body_shape",
+      "habitat", "gender", "gender_ratio"
+    ];
+
+    for (let field of requiredFields) {
+      const value = document.getElementById(field).value;
+      if (!value) {
+        alert(`¡Eh! El campo "${field}" es obligatorio.`);
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  function volverAdmin() {
+    window.location.href = "listado_pakemones.php";
+  }
+</script>
+
+</body>
+</html>

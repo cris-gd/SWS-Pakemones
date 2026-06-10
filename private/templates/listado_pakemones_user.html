@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Administración Pakemones</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffffff 60%, #cc0000 60%);
+    }
+
+    /* CABECERA */
+
+    header {
+      background: #ffffff;
+      border-bottom: 5px solid #000;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      justify-content: space-between;
+      box-shadow: 0 5px 0 #000;
+    }
+
+        .btn-volver {
+      padding: 10px 16px;
+      background: #cc0000;
+      color: #fff;
+      border: 3px solid #000;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 3px 3px 0 #000;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .btn-volver:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 5px 5px 0 #000;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    .btn {
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      border: 3px solid #000;
+      box-shadow: 3px 3px 0 #000;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 5px 5px 0 #000;
+    }
+
+    .btn-add {
+      background: #cc0000;
+      color: #fff;
+    }
+
+    /* CONTENEDOR */
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: #fff;
+      border: 5px solid #000;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 8px 8px 0 #000;
+    }
+
+    h1 {
+      text-align: center;
+      color: #cc0000;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 0 #000;
+    }
+
+    /* TARJETA */
+    .pakemon-card {
+      display: none;
+    }
+
+    .pakemon-card.active {
+      display: block;
+    }
+
+    .pakemon-main {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 20px;
+    }
+
+    .pakemon-photo {
+      width: 300px;
+      height: 300px;
+      border: 5px solid #000;
+      border-radius: 16px;
+      background: #eee;
+      overflow: hidden;
+      box-shadow: 5px 5px 0 #000;
+    }
+
+    .pakemon-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .pakemon-title {
+      font-size: 26px;
+      font-weight: bold;
+      color: #cc0000;
+      text-shadow: 2px 2px 0 #000;
+      margin-bottom: 5px;
+    }
+
+    .pakemon-sub {
+      font-size: 14px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .pakemon-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 20px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .pakemon-info span {
+      display: block;
+    }
+
+    /* ACCIONES */
+    .actions {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .btn-capture {
+      background: #fff;
+      color: #000;
+    }
+
+    /* CARRUSEL */
+    .carousel-controls {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 25px;
+    }
+
+    .btn-nav {
+      background: #cc0000;
+      color: #fff;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 12px;
+      color: #333;
+    }
+  </style>
+
+<script>
+  function volverUser() {
+    window.location.href = "user.php";
+  }
+
+  function capturarPakemon(id) {
+    window.location.href = "capturar_pakemon.php?id="+id;
+  }
+
+</script>
+
+
+
+</head>
+
+<body>
+
+<header>
+	<div>
+  <button class="btn-volver" onclick="volverUser()">⬅ Volver</button>
+  <img src="images/pakemonlogo.png" alt="Pakemon Logo">
+	</div>
+</header>
+
+<div class="container">
+  <h1>PakeDex</h1>
+
+  ##INIT_LIST##
+  <div class="pakemon-card active">
+    <div class="pakemon-main">
+
+      <div class="pakemon-photo">
+        <img src="##PHOTO##" alt="##NAME##">
+      </div>
+
+      <div>
+        <div class="pakemon-title">##NAME##</div>
+        <div class="pakemon-sub">
+          Nº Pakodex ##PAKEDEX_NUMBER## · Generación ##GENERATION## · Forma ##FORM##
+        </div>
+
+        <div class="pakemon-info">
+          <span>Tipo: ##PRIMARY_TYPE## / ##SECONDARY_TYPE##</span>
+          <span>Categoría: ##CATEGORY##</span>
+
+          <span>Color: ##COLOR##</span>
+          <span>Grupo: ##GROUP##</span>
+
+          <span>Altura: ##HEIGHT_M## m</span>
+          <span>Peso: ##WEIGHT_KG## kg</span>
+
+          <span>Forma corporal: ##BODY_SHAPE##</span>
+          <span>Hábitat: ##HABITAT##</span>
+
+          <span>Género: ##GENDER##</span>
+          <span>Ratio: ##GENDER_RATIO##</span>
+
+          <span>Región: ##REGION##</span>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-capture" onclick="capturarPakemon(##ID##)">Capturar</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+##END_LIST##
+
+  <div class="carousel-controls">
+    <button class="btn btn-nav" onclick="prevPakemon()">⬅ Anterior</button>
+    <button class="btn btn-nav" onclick="nextPakemon()">Siguiente ➡</button>
+  </div>
+
+  <div class="footer">
+    Pakedex · Pakelibretica oficial 📒🔥
+  </div>
+</div>
+
+</body>
+</html>
+
+  <script>
+  let current = 0;
+  const cards = document.querySelectorAll(".pakemon-card");
+
+  function initCarousel() {
+    cards.forEach((card, index) => {
+      card.classList.remove("active");
+      if (index === 0) {
+        card.classList.add("active");
+      }
+    });
+    current = 0;
+  }
+
+  function showPakemon(index) {
+    cards.forEach(card => card.classList.remove("active"));
+    cards[index].classList.add("active");
+  }
+
+  function nextPakemon() {
+    current = (current + 1) % cards.length;
+    showPakemon(current);
+  }
+
+  function prevPakemon() {
+    current = (current - 1 + cards.length) % cards.length;
+    showPakemon(current);
+  }
+
+  document.addEventListener("DOMContentLoaded", initCarousel);
+</script>

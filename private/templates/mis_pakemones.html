@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mis Pakemones</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffffff 60%, #cc0000 60%);
+}
+
+/* CABECERA */
+header {
+  background: #ffffff;
+  border-bottom: 5px solid #000;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 5px 0 #000;
+}
+
+.btn-volver {
+  padding: 10px 16px;
+  background: #cc0000;
+  color: #fff;
+  border: 3px solid #000;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 #000;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.btn-volver:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 #000;
+}
+
+header img {
+  height: 50px;
+}
+
+/* CONTENEDOR */
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  background: #fff;
+  border: 5px solid #000;
+  border-radius: 18px;
+  padding: 25px;
+  box-shadow: 8px 8px 0 #000;
+}
+
+h1 {
+  text-align: center;
+  color: #cc0000;
+  margin-bottom: 25px;
+  text-shadow: 2px 2px 0 #000;
+}
+
+/* LISTADO */
+.pakemon-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.pakemon-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  border: 4px solid #000;
+  border-radius: 14px;
+  background: #f8f8f8;
+  box-shadow: 4px 4px 0 #000;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.pakemon-item:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000;
+}
+
+.pakemon-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.pakemon-photo {
+  width: 80px;
+  height: 80px;
+  border: 3px solid #000;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #eee;
+}
+
+.pakemon-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pakemon-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #cc0000;
+  text-shadow: 1px 1px 0 #000;
+}
+
+/* BOTÓN */
+.btn {
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  border: 3px solid #000;
+  background: #cc0000;
+  color: #fff;
+  box-shadow: 3px 3px 0 #000;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 #000;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 12px;
+  color: #333;
+}
+</style>
+
+<script>
+function volverUser() {
+  window.location.href = "user.php";
+}
+
+function verDetalle(id) {
+  window.location.href = "detalle_pakemon.php?id=" + id;
+}
+</script>
+
+</head>
+
+<body>
+
+<header>
+  <button class="btn-volver" onclick="volverUser()">⬅ Volver</button>
+  <img src="images/pakemonlogo.png" alt="Pakemon Logo">
+</header>
+
+<div class="container">
+  <h1>Mis Pakemones</h1>
+
+  <div class="pakemon-list">
+
+    ##INIT_LIST##
+    <div class="pakemon-item">
+
+      <div class="pakemon-left">
+        <div class="pakemon-photo">
+          <img src="##PHOTO##" alt="##NAME##">
+        </div>
+
+        <div class="pakemon-name">
+          ##NAME##
+        </div>
+      </div>
+
+      <button class="btn" onclick="verDetalle(##ID##)">
+        Ver detalle
+      </button>
+
+    </div>
+    ##END_LIST##
+
+  </div>
+
+  <div class="footer">
+    Pakedex · Mis Pakemones capturados 📸🔥
+  </div>
+</div>
+
+</body>
+</html>

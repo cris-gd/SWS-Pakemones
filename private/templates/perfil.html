@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Libretica Pakemon - Mi Perfil</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffffff 60%, #cc0000 60%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .profile-container {
+      background: white;
+      border: 4px solid #000;
+      border-radius: 16px;
+      width: 420px;
+      padding: 25px;
+      box-shadow: 8px 8px 0 #000;
+      text-align: center;
+      position: relative;
+    }
+
+    .logo img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      margin: 10px 0 20px;
+      color: #cc0000;
+      text-shadow: 2px 2px 0 #000;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+      text-align: left;
+    }
+
+    label {
+      font-weight: bold;
+      color: #000;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 3px solid #000;
+      border-radius: 8px;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #cc0000;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    /* BOTÓN GUARDAR */
+    .btn-save {
+      background: #cc0000;
+      color: white;
+      border: 3px solid #000;
+      box-shadow: 3px 3px 0 #000;
+    }
+
+    .btn-back {
+      background: white;
+      color: #000;
+      border: 3px dashed #000;
+      box-shadow: 3px 3px 0 #000;
+    }
+
+    .btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 5px 5px 0 #000;
+    }
+
+    /* BURBUJA */
+    .burst {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      background: #000;
+      color: white;
+      border: 3px solid #cc0000;
+      border-radius: 50%;
+      width: 90px;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: bold;
+      transform: rotate(15deg);
+      box-shadow: 3px 3px 0 #cc0000;
+      text-align: center;
+    }
+
+    .footer-text {
+      margin-top: 15px;
+      font-size: 12px;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="profile-container">
+    <div class="burst">Modo<br>Perfil ⚙️</div>
+
+    <!-- LOGO -->
+    <div class="logo">
+      <img src="images/pakemonlogo.png" alt="Pakemon">
+    </div>
+
+    <h1>Mi Perfil</h1>
+
+    <!-- FORMULARIO -->
+    <form action="perfil.php" method="POST" onsubmit="return validarPerfil()">
+
+      <div class="form-group">
+        <label for="username">Usuario</label>
+        <input type="text" id="username" name="username" value="##USERNAME##">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" value="##EMAIL##">
+      </div>
+
+      <div class="form-group">
+        <label for="first_name">Nombre</label>
+        <input type="text" id="first_name" name="first_name" value="##FIRST_NAME##">
+      </div>
+
+      <div class="form-group">
+        <label for="last_name">Apellidos</label>
+        <input type="text" id="last_name" name="last_name" value="##LAST_NAME##">
+      </div>
+
+      <!-- CAMBIO DE CONTRASEÑA (OPCIONAL) -->
+      <div class="form-group">
+        <label for="password">Nueva contraseña</label>
+        <input type="password" id="password" name="password" placeholder="Déjalo vacío si no cambias nada">
+      </div>
+
+      <div class="form-group">
+        <label for="password2">Repite la nueva contraseña</label>
+        <input type="password" id="password2" name="password2">
+      </div>
+
+      <button type="submit" class="btn btn-save">
+        Guardar Cambios
+      </button>
+    </form>
+
+    <button class="btn btn-back" onclick="volverPanel()">
+      Volver
+    </button>
+
+    <div class="footer-text">
+      Ajusta tu perfil de Pakoadiestrador 🛠️🔥
+    </div>
+  </div>
+
+  <script>
+    function validarPerfil() {
+      const user = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const pass1 = document.getElementById("password").value;
+      const pass2 = document.getElementById("password2").value;
+
+      if (!user || !email) {
+        alert("Usuario y email son obligatorios.");
+        return false;
+      }
+
+      // Solo validar contraseña si se escribe
+      if (pass1 || pass2) {
+        if (pass1.length < 6) {
+          alert("La nueva contraseña debe tener al menos 6 caracteres.");
+          return false;
+        }
+
+        if (pass1 !== pass2) {
+          alert("Las contraseñas no coinciden.");
+          return false;
+        }
+      }
+
+      return true;
+    }
+
+    function volverPanel() {
+      window.location.href = "index.php"; // o panel.php si tienes otro
+    }
+  </script>
+
+</body>
+</html>

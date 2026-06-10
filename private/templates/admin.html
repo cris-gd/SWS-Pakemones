@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Panel de Control - Pakemon</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(135deg,#ffffff 65%,#cc0000 65%);
+}
+
+/* ===== CABECERA ===== */
+header{
+  background:#ffffff;
+  border-bottom:6px solid #000;
+  padding:18px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:6px 6px 0 #000;
+}
+
+header img{
+  height:60px;
+}
+
+.btn{
+  padding:12px 22px;
+  background:#000;
+  color:#fff;
+  border:4px solid #000;
+  border-radius:12px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:4px 4px 0 #cc0000;
+  transition:0.1s;
+}
+
+.btn:hover{
+  transform:translate(-3px,-3px);
+  box-shadow:7px 7px 0 #cc0000;
+  background:#cc0000;
+}
+
+/* ===== CONTENEDOR ===== */
+.container{
+  max-width:1050px;
+  margin:50px auto;
+  background:#ffffff;
+  border:6px solid #000;
+  border-radius:25px;
+  padding:45px 40px;
+  box-shadow:10px 10px 0 #000;
+  position:relative;
+}
+
+/* ===== TITULO ===== */
+h1{
+  text-align:center;
+  font-size:40px;
+  color:#cc0000;
+  text-shadow:3px 3px 0 #000;
+  margin-bottom:10px;
+}
+
+.subtitle{
+  text-align:center;
+  font-weight:bold;
+  margin-bottom:40px;
+  color:#333;
+}
+
+/* ===== GRID ===== */
+.admin-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+
+.admin-card{
+  background:#fff;
+  border:5px solid #000;
+  border-radius:20px;
+  padding:35px 25px;
+  box-shadow:8px 8px 0 #000;
+  cursor:pointer;
+  transition:0.1s;
+  position:relative;
+  text-align:center;
+}
+
+.admin-card:hover{
+  transform:translate(-5px,-5px);
+  box-shadow:12px 12px 0 #000;
+  background:#ffecec;
+}
+
+/* BADGE */
+.admin-badge{
+  position:absolute;
+  top:12px;
+  right:12px;
+  background:#cc0000;
+  color:#fff;
+  padding:5px 10px;
+  font-size:11px;
+  font-weight:bold;
+  border:3px solid #000;
+  border-radius:8px;
+  box-shadow:3px 3px 0 #000;
+}
+
+/* ICONO */
+.admin-icon{
+  font-size:60px;
+  margin-bottom:18px;
+}
+
+/* TITULO CARD */
+.admin-title{
+  font-size:20px;
+  font-weight:900;
+  color:#cc0000;
+  margin-bottom:12px;
+}
+
+/* DESCRIPCIÓN */
+.admin-desc{
+  font-size:14px;
+  color:#333;
+}
+
+/* FOOTER */
+.footer{
+  margin-top:45px;
+  text-align:center;
+  border-top:3px dashed #000;
+  padding-top:20px;
+  font-size:13px;
+}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+  .container{
+    margin:20px;
+    padding:30px 20px;
+  }
+
+  h1{
+    font-size:30px;
+  }
+
+  header{
+    flex-direction:column;
+    gap:15px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <img src="images/pakemonlogo.png" alt="Pakemon Logo">
+  <button class="btn" onclick="logout()">🔓 Cerrar Sesión</button>
+</header>
+
+<div class="container">
+
+  <h1>Panel de Control</h1>
+  <div class="subtitle">
+    Administrador Oficial del Sistema Pakemon 📒
+  </div>
+
+  <div class="admin-grid">
+
+    <div class="admin-card" onclick="goUsuarios()">
+      <div class="admin-badge">ADMIN</div>
+      <div class="admin-icon">👥</div>
+      <div class="admin-title">Gestión de Entrenadores</div>
+      <div class="admin-desc">
+        Crear, modificar o eliminar usuarios del sistema.
+      </div>
+    </div>
+
+    <div class="admin-card" onclick="goPakemones()">
+      <div class="admin-badge">ADMIN</div>
+      <div class="admin-icon">🐖</div>
+      <div class="admin-title">Pakedex Oficial</div>
+      <div class="admin-desc">
+        Administrar el catálogo completo de Pakemones.
+      </div>
+    </div>
+
+    <div class="admin-card" onclick="goPerfil()">
+      <div class="admin-badge">USER</div>
+      <div class="admin-icon">⚙️</div>
+      <div class="admin-title">Configuración</div>
+      <div class="admin-desc">
+        Ajustar credenciales y preferencias del sistema.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Sistema Administrativo Pakemon · Acceso restringido 🔒
+  </div>
+
+</div>
+
+<script>
+function logout(){
+  window.location.href="index.php?logout=true";
+}
+
+function goUsuarios(){
+  window.location.href="listado.php";
+}
+
+function goPakemones(){
+  window.location.href="listado_pakemones.php";
+}
+
+function goPerfil(){
+  window.location.href="perfil.php";
+}
+</script>
+
+</body>
+</html>
+

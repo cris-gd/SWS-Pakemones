@@ -1,0 +1,42 @@
+[
+    {
+        "iduser": 3,
+        "idpakemon": 1,
+        "foto": "brasetejugando.png"
+    },
+    {
+        "iduser": 3,
+        "idpakemon": 1,
+        "foto": "brasetemaquillaje.png"
+    },
+    {
+        "iduser": 3,
+        "idpakemon": 1,
+        "foto": "brasetemojado.png"
+    },
+    {
+        "iduser": 2,
+        "idpakemon": 7,
+        "foto": "jamoncitosecadero.png"
+    },
+    {
+        "iduser": 3,
+        "idpakemon": 8,
+        "foto": "duendecillocama.png"
+    },
+    {
+        "iduser": 2,
+        "idpakemon": "7",
+        "foto": "jamon.jpg"
+    },
+    {
+        "iduser": 2,
+        "idpakemon": "2",
+        "foto": "Amoeba.jpg"
+    },
+    {
+        "iduser": 2,
+        "idpakemon": "2",
+        "foto": "Amoeba.jpg"
+    }
+]

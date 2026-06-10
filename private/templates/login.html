@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Libretica Pakemon - Login</title>
+
+  <style>
+    /* RESET BÁSICO */
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffffff 60%, #cc0000 60%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* CONTENEDOR PRINCIPAL */
+    .login-container {
+      background: white;
+      border: 4px solid #000;
+      border-radius: 16px;
+      width: 380px;
+      padding: 25px;
+      box-shadow: 8px 8px 0 #000;
+      text-align: center;
+      position: relative;
+    }
+
+    /* LOGO */
+    .logo {
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* TÍTULO */
+    h1 {
+      margin: 10px 0 20px;
+      color: #cc0000;
+      text-shadow: 2px 2px 0 #000;
+    }
+
+    /* INPUTS */
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    label {
+      font-weight: bold;
+      color: #000;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 3px solid #000;
+      border-radius: 8px;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #cc0000;
+    }
+
+    /* BOTONES */
+    .btn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .btn-login {
+      background: #cc0000;
+      color: white;
+      border: 3px solid #000;
+      box-shadow: 3px 3px 0 #000;
+    }
+
+    .btn-register {
+      background: white;
+      color: #000;
+      border: 3px dashed #000;
+      box-shadow: 3px 3px 0 #000;
+    }
+
+    .btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 5px 5px 0 #000;
+    }
+
+    /* TEXTO EXTRA */
+    .footer-text {
+      margin-top: 15px;
+      font-size: 12px;
+      color: #333;
+    }
+
+    /* DETALLE MANGA */
+    .burst {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      background: #cc0000;
+      color: white;
+      border: 3px solid #000;
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+      transform: rotate(15deg);
+      box-shadow: 3px 3px 0 #000;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-container">
+    <div class="burst">¡Pak!</div>
+
+    <!-- LOGO -->
+    <div class="logo">
+      <!-- Sustituye la ruta por tu imagen real -->
+      <img src="images/pakemonlogo.png" alt="Pakemon">
+    </div>
+
+    <h1>Libretica Pakemon</h1>
+
+    <!-- FORMULARIO -->
+    <form action="index.php" method="POST" onsubmit="return validarLogin()">
+      <div class="form-group">
+        <label for="username">Usuario</label>
+        <input type="text" id="username" name="username" placeholder="Tu nombre de Pakeadiestrador">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password" placeholder="••••••••">
+      </div>
+
+      <button type="submit" class="btn btn-login">Entrar a la Libretica</button>
+    </form>
+
+    <button class="btn btn-register" onclick="irARegistro()">
+      Registrarse
+    </button>
+
+    <div class="footer-text">
+      Hazte con todos… o al menos apúntalos 🐖
+    </div>
+  </div>
+
+  <script>
+    function validarLogin() {
+      const user = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value.trim();
+
+      if (user === "" || pass === "") {
+        alert("¡Eh! No puedes entrar sin usuario y contraseña, paisano.");
+        return false;
+      }
+
+      return true;
+    }
+
+    function irARegistro() {
+      window.location.href = "registro.php";
+    }
+  </script>
+
+</body>
+</html>
+
